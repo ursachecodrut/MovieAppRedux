@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart';
+import 'package:movie_app/src/actions/get_movies.dart';
 import 'package:movie_app/src/data/movie_api.dart';
 import 'package:movie_app/src/middleware/middleware.dart';
 import 'package:movie_app/src/models/app_state.dart';
@@ -19,6 +20,7 @@ void main() {
     initialState: AppState(),
     middleware: appMiddleware.middleware,
   );
+  store.dispatch(GetMovies());
   runApp(MovieApp(store: store));
 }
 
@@ -32,7 +34,6 @@ class MovieApp extends StatelessWidget {
         store: store,
         child: const MaterialApp(
           home: HomePage(),
-        )
-    );
+        ));
   }
 }
