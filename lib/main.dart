@@ -11,7 +11,7 @@ import 'package:movie_app/src/reducer/reducer.dart';
 import 'package:redux/redux.dart';
 
 void main() {
-  const String apiUrl = 'https/yts.mx/api/v2';
+  const String apiUrl = 'https://yts.mx/api/v2';
   final Client client = Client();
   final MoviesApi moviesApi = MoviesApi(apiUrl: apiUrl, client: client);
   final AppMiddleware appMiddleware = AppMiddleware(moviesApi: moviesApi);

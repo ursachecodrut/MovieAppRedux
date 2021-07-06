@@ -5,6 +5,10 @@ import 'package:movie_app/src/models/movie.dart';
 import 'package:redux/redux.dart';
 
 Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
+  (AppState state, dynamic action) {
+    print(action);
+    return state;
+  },
   TypedReducer<AppState, GetMoviesSuccessful>(_getMoviesSuccessful),
 ]);
 

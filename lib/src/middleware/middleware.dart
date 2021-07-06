@@ -15,14 +15,14 @@ class AppMiddleware {
     ];
   }
 
-  Future<void> _getMovies(
-      Store<AppState> store, GetMovies action, NextDispatcher next) async {
+  Future<void> _getMovies(Store<AppState> store, GetMovies action, NextDispatcher next) async {
     next(action);
     try {
       final List<Movie> movies = await _moviesApi.getMovies();
       store.dispatch(GetMoviesSuccessful(movies));
     } catch (error) {
       store.dispatch(GetMoviesError(error));
+      print(error);
     }
   }
 }

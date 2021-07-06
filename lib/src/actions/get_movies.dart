@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:movie_app/src/models/movie.dart';
 
 class GetMovies {}
@@ -11,6 +10,5 @@ class GetMoviesSuccessful {
 
 class GetMoviesError {
   GetMoviesError(this.error);
-
   final Object error;
 }

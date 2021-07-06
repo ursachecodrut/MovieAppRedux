@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/actions/movies_container.dart';
+import 'package:movie_app/src/container/movies_container.dart';
 import 'package:movie_app/src/models/movie.dart';
 
 class HomePage extends StatelessWidget {
