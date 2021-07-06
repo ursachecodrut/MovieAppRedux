@@ -21,6 +21,11 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'medium_cover_image',
+      serializers.serialize(object.image,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -41,6 +46,14 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'medium_cover_image':
+          result.image = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -51,12 +64,19 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
 class _$Movie extends Movie {
   @override
   final String title;
+  @override
+  final int id;
+  @override
+  final String image;
 
   factory _$Movie([void Function(MovieBuilder)? updates]) =>
       (new MovieBuilder()..update(updates)).build();
 
-  _$Movie._({required this.title}) : super._() {
+  _$Movie._({required this.title, required this.id, required this.image})
+      : super._() {
     BuiltValueNullFieldError.checkNotNull(title, 'Movie', 'title');
+    BuiltValueNullFieldError.checkNotNull(id, 'Movie', 'id');
+    BuiltValueNullFieldError.checkNotNull(image, 'Movie', 'image');
   }
 
   @override
@@ -69,17 +89,23 @@ class _$Movie extends Movie {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Movie && title == other.title;
+    return other is Movie &&
+        title == other.title &&
+        id == other.id &&
+        image == other.image;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, title.hashCode));
+    return $jf($jc($jc($jc(0, title.hashCode), id.hashCode), image.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Movie')..add('title', title))
+    return (newBuiltValueToStringHelper('Movie')
+          ..add('title', title)
+          ..add('id', id)
+          ..add('image', image))
         .toString();
   }
 }
@@ -91,12 +117,22 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
 
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
+
+  String? _image;
+  String? get image => _$this._image;
+  set image(String? image) => _$this._image = image;
+
   MovieBuilder();
 
   MovieBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _title = $v.title;
+      _id = $v.id;
+      _image = $v.image;
       _$v = null;
     }
     return this;
@@ -118,7 +154,10 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
     final _$result = _$v ??
         new _$Movie._(
             title:
-                BuiltValueNullFieldError.checkNotNull(title, 'Movie', 'title'));
+                BuiltValueNullFieldError.checkNotNull(title, 'Movie', 'title'),
+            id: BuiltValueNullFieldError.checkNotNull(id, 'Movie', 'id'),
+            image:
+                BuiltValueNullFieldError.checkNotNull(image, 'Movie', 'image'));
     replace(_$result);
     return _$result;
   }
