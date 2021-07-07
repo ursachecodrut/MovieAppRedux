@@ -22,5 +22,7 @@ abstract class Movie implements Built<Movie, MovieBuilder> {
   @BuiltValueField(wireName: 'medium_cover_image')
   String get image;
 
+  String get summary;
+
   static Serializer<Movie> get serializer => _$movieSerializer;
 }

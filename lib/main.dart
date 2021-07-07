@@ -7,6 +7,7 @@ import 'package:movie_app/src/data/movie_api.dart';
 import 'package:movie_app/src/middleware/middleware.dart';
 import 'package:movie_app/src/models/app_state.dart';
 import 'package:movie_app/src/presentation/home_page.dart';
+import 'package:movie_app/src/presentation/movie_details.dart';
 import 'package:movie_app/src/reducer/reducer.dart';
 import 'package:redux/redux.dart';
 
@@ -35,6 +36,11 @@ class MovieApp extends StatelessWidget {
       child: MaterialApp(
         home: const HomePage(),
         theme: ThemeData.dark(),
+        routes: <String, WidgetBuilder>{
+          '/details': (BuildContext context) {
+            return const MovieDetails();
+          },
+        },
       ),
     );
   }

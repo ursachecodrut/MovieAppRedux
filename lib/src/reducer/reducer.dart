@@ -40,6 +40,6 @@ AppState _getMoviesError(AppState state, GetMoviesError action) {
 
 AppState _setSelectedMovie(AppState state, SetSelectedMovie action) {
   return state.rebuild((AppStateBuilder b) {
-    b.movies;
+    b.selectedMovie = action.movieId;
   });
 }

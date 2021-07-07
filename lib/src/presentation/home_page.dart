@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_app/src/actions/get_movies.dart';
+import 'package:movie_app/src/actions/set.dart';
 
 import 'package:movie_app/src/container/movies_container.dart';
 import 'package:movie_app/src/container/is_loading_container.dart';
@@ -94,8 +95,11 @@ class _HomePageState extends State<HomePage> {
                     cacheExtent: MediaQuery.of(context).size.height,
                     itemBuilder: (BuildContext context, int index) {
                       final Movie movie = movies[index];
-                      return SizedBox(
-                        height: 400,
+                      return GestureDetector(
+                        onTap: () {
+                          StoreProvider.of<AppState>(context).dispatch(SetSelectedMovie(movie.id));
+                          Navigator.pushNamed(context, '/details');
+                        },
                         child: GridTile(
                           child: Image.network(movie.image),
                           footer: GridTileBar(
