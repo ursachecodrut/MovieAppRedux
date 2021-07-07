@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     final double threshold = screenHeight * 0.2;
 
     if (delta < threshold && !isLoading) {
-      store.dispatch(GetMovies());
+      store.dispatch(const GetMovies());
     }
   }
 
@@ -48,8 +48,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MoviesContainer(builder: (BuildContext context, List<Movie> movies) {
-      return Scaffold(
+    return MoviesContainer(
+      builder: (BuildContext context, List<Movie> movies) {
+        return Scaffold(
           appBar: AppBar(
             title: const Text('Movie App'),
             actions: <Widget>[
@@ -108,7 +109,9 @@ class _HomePageState extends State<HomePage> {
                 },
               );
             },
-          ));
-    });
+          ),
+        );
+      },
+    );
   }
 }

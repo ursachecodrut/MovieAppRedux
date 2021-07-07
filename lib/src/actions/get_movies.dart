@@ -22,6 +22,7 @@ class GetMoviesSuccessful {
 
 class GetMoviesError {
   GetMoviesError(this.error);
+
   final Object error;
 
   @override

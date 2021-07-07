@@ -20,7 +20,7 @@ void main() {
     initialState: AppState(),
     middleware: appMiddleware.middleware,
   );
-  store.dispatch(GetMovies());
+  store.dispatch(const GetMovies());
   runApp(MovieApp(store: store));
 }
 
@@ -31,11 +31,11 @@ class MovieApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
-        store: store,
-        child: MaterialApp(
-          home: const HomePage(),
-          theme: ThemeData.dark(),
-        ),
+      store: store,
+      child: MaterialApp(
+        home: const HomePage(),
+        theme: ThemeData.dark(),
+      ),
     );
   }
 }

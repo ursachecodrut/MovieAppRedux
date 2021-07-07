@@ -12,7 +12,6 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
   TypedReducer<AppState, GetMovies>(_getMovies),
   TypedReducer<AppState, GetMoviesError>(_getMoviesError),
   TypedReducer<AppState, SetSelectedMovie>(_setSelectedMovie),
-
 ]);
 
 AppState _getMovies(AppState state, GetMovies action) {
@@ -38,6 +37,7 @@ AppState _getMoviesError(AppState state, GetMoviesError action) {
       ..error = '${action.error}';
   });
 }
+
 AppState _setSelectedMovie(AppState state, SetSelectedMovie action) {
   return state.rebuild((AppStateBuilder b) {
     b.movies;
